@@ -38,7 +38,7 @@ public class PinSpawner : MonoBehaviour
 
       pin.rotation = Quaternion.Euler(0, 0, angle);
 
-      pin.setParent(targetTransform);
+      pin.SetParent(targetTransform);
 
       pin.GetComponent<Pin>().SetInPinStuckToTarget();
     }

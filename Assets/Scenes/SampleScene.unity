@@ -237,6 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pinSpawner: {fileID: 2135455336}
   throwablePinCount: 2
+  stuckPinCount: 2
 --- !u!4 &777435305
 Transform:
   m_ObjectHideFlags: 0
@@ -263,7 +264,7 @@ GameObject:
   - component: {fileID: 1281580906}
   - component: {fileID: 1281580905}
   m_Layer: 0
-  m_Name: target
+  m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -378,6 +379,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pinPrefab: {fileID: 3863732127368680965, guid: 1935a83ea38fc4750a99bc3b9513c930, type: 3}
+  targetTransform: {fileID: 1281580907}
+  targetPosition: {x: 0, y: 2, z: 0}
+  targetRadius: 0.8
+  pinLength: 1.5
 --- !u!4 &2135455337
 Transform:
   m_ObjectHideFlags: 0
