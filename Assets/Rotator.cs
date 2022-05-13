@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class rotaterScript : MonoBehaviour
+public class Rotator : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]
@@ -16,5 +16,10 @@ public class rotaterScript : MonoBehaviour
     {
       //오브젝트 회전식
     transform.Rotate(rotateAngle * rotateSpeed * Time.deltaTime);
+    }
+
+    public void Stop()
+    {
+      rotateSpeed = 0;
     }
 }

@@ -9,6 +9,13 @@ public class Pin : MonoBehaviour
     [SerializeField]
     private float moveTime = 0.2f;
 
+    private StageController stageController;
+
+    public void Setup(StageController stageController)
+    {
+      this.stageController = stageController;
+    }
+
     public void SetInPinStuckToTarget()
     {
       StopCoroutine("MoveTo");
@@ -37,6 +44,14 @@ public class Pin : MonoBehaviour
         transform.position = Vector3.Lerp(start, end, percent);
 
         yield return null;
+      }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+      if (collision.tag.Equals("Pin"))
+      {
+        stageController.GameOver();
       }
     }
 }
