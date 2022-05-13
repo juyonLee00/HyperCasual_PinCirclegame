@@ -9,6 +9,10 @@ public class PinSpawner : MonoBehaviour
     private StageController stageController;
     [SerializeField]
     private GameObject pinPrefab;
+    [SerializeField]
+    private GameObject textPinIndexPrefab;
+    [SerializeField]
+    private Transform textParent;
 
     [Header("Stuck Pin")]
     [SerializeField]
@@ -46,20 +50,24 @@ public class PinSpawner : MonoBehaviour
       }
     }
 
-    public void SpawnThrowablePin(Vector3 position)
+    public void SpawnThrowablePin(Vector3 position, int index)
     {
       GameObject clone = Instantiate(pinPrefab, position, Quaternion.identity);
 
       Pin pin = clone.GetComponent<Pin>();
 
       throwablePins.Add(pin);
+
+      SpawnTextUI(clone.transform, index);
     }
 
-    public void SpawnStuckPin(float angle)
+    public void SpawnStuckPin(float angle, int index)
     {
       GameObject clone = Instantiate(pinPrefab);
 
       SetInPinStuckToTarget(clone.transform, angle);
+
+      SpawnTextUI(clone.transform, index);
     }
 
 
@@ -72,5 +80,18 @@ public class PinSpawner : MonoBehaviour
       pin.SetParent(targetTransform);
 
       pin.GetComponent<Pin>().SetInPinStuckToTarget();
+    }
+
+    private void SpawnTextUI(Transform target, int index)
+    {
+      GameObject textClone = Instantiate(textPinIndexPrefab);
+
+      textClone.transform.SetParent(textParent);
+
+      textClone.transform.localScale = Vector3.one;
+
+      textClone.GetComponent<WorldToScreenPosition>().Setup(target);
+
+      textClone.GetComponent<TMPro.TextMeshProUGUI>().text = index.ToString();
     }
 }
