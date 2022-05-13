@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PinSpawner : MonoBehaviour
 {
-    // Start is called before the first frame update
     [Header("Commons")]
     [SerializeField]
     private StageController stageController;
@@ -32,17 +31,18 @@ public class PinSpawner : MonoBehaviour
       throwablePins = new List<Pin>();
     }
 
-
-    private void Update(){
+    private void Update()
+    {
       if(Input.GetMouseButtonDown(0) && throwablePins.Count > 0)
       {
         SetInPinStuckToTarget(throwablePins[0].transform, bottomAngle);
         throwablePins.RemoveAt(0);
 
-        for (int i = 0; i < throwablePins.Count; ++i)
+        for(int i = 0; i < throwablePins.Count; ++i)
         {
-          throwablePins[i].MoveOneStep(stageController.TPinDistance); 
+          throwablePins[i].MoveOnStep(stageController.TPinDistance);
         }
+
       }
     }
 

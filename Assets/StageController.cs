@@ -18,6 +18,7 @@ public class StageController : MonoBehaviour
     private void Awake()
     {
       pinSpawner.Setup();
+      
       for(int i = 0; i < throwablePinCount; ++i)
       {
         pinSpawner.SpawnThrowablePin(firstTPinPosition + Vector3.down * TPinDistance * i);
