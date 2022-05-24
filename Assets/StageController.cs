@@ -14,14 +14,19 @@ public class StageController : MonoBehaviour
     private int throwablePinCount;
     [SerializeField]
     private int stuckPinCount;
+    [SerializeField]
+    private Rotator rotatorIndexPanel;
+
 
     private Vector3 firstTPinPosition = Vector3.down * 2;
 
     public float TPinDistance {private set; get;} = 1;
 
     private Color failBackgroundColor = new Color(0.4f, 0.1f, 0.1f);
+    private Color clearBackgroundColor = new Color(0, 0.5f, 0.25f);
 
     public bool IsGameOver {set; get;} = false;
+
 
     private void Awake()
     {
@@ -46,6 +51,33 @@ public class StageController : MonoBehaviour
       mainCamera.backgroundColor = failBackgroundColor;
 
       rotatorTarget.Stop();
+    }
+
+    public void DecreaseThrowablePin()
+    {
+      throwablePinCount--;
+
+      if(throwablePinCount == 0)
+      {
+        //Debug.Log("GameClear");
+        StartCoroutine("GameClear");
+      }
+    }
+
+    private IEnumerator GameClear()
+    {
+      yield return new WaitForSeconds(0.1f);
+
+      if(IsGameOver == true)
+      {
+        yield break;
+      }
+
+      mainCamera.backgroundColor = clearBackgroundColor;
+
+      rotatorTarget.RotateFast();
+
+      rotatorIndexPanel.RotateFast();
     }
 
 }

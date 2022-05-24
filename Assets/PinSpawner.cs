@@ -49,6 +49,7 @@ public class PinSpawner : MonoBehaviour
           throwablePins[i].MoveOnStep(stageController.TPinDistance);
         }
 
+        stageController.DecreaseThrowablePin();
       }
     }
 
@@ -71,10 +72,12 @@ public class PinSpawner : MonoBehaviour
       Pin pin = clone.GetComponent<Pin>();
       pin.Setup(stageController);
 
+
       SetInPinStuckToTarget(clone.transform, angle);
 
       SpawnTextUI(clone.transform, index);
     }
+
 
 
     private void SetInPinStuckToTarget(Transform pin, float angle)

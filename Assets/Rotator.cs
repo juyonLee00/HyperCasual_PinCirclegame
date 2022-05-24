@@ -9,6 +9,8 @@ public class Rotator : MonoBehaviour
     private float rotateSpeed = 50; //회전 속도 설정
     [SerializeField]
     private Vector3 rotateAngle = Vector3.forward; //회전 방향 설정
+    [SerializeField]
+    private float maxRotateSpeed = 500;
 
 
     // Update is called once per frame
@@ -21,5 +23,10 @@ public class Rotator : MonoBehaviour
     public void Stop()
     {
       rotateSpeed = 0;
+    }
+
+    public void RotateFast()
+    {
+      rotateSpeed = maxRotateSpeed;
     }
 }
