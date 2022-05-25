@@ -37,7 +37,7 @@ public class PinSpawner : MonoBehaviour
 
     private void Update()
     {
-      if(stageController.IsGameOver == true) return;
+      if(stageController.IsGameStart == false || stageController.IsGameOver == true) return;
 
       if(Input.GetMouseButtonDown(0) && throwablePins.Count > 0)
       {
