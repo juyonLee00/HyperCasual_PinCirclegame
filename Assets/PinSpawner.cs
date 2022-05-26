@@ -24,6 +24,8 @@ public class PinSpawner : MonoBehaviour
     [SerializeField]
     private float pinLength = 1.5f;
 
+    private AudioSource audioSource;
+
     [Header("Throwable Pin")]
     [SerializeField]
     private float bottomAngle = 270;
@@ -32,6 +34,7 @@ public class PinSpawner : MonoBehaviour
 
     public void Setup()
     {
+      audioSource = GetComponent<AudioSource>();
       throwablePins = new List<Pin>();
     }
 
@@ -50,6 +53,8 @@ public class PinSpawner : MonoBehaviour
         }
 
         stageController.DecreaseThrowablePin();
+
+        audioSource.Play();
       }
     }
 
